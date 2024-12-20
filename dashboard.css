@@ -1,0 +1,352 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Header background related to the image */
+  header {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  /* Navigation bar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .logo h3 {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .nav-list {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin-left: auto;
+  }
+
+  .nav-list li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+
+  .nav-list li a:hover {
+    color: sandybrown;
+  }
+
+  /* Responsive Navigation */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+    }
+
+    .nav-list {
+      margin-left: 0;
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+
+  /* Fullscreen image styling */
+  .main1 {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('./images/sliderjj.jpg') no-repeat center center / cover;
+  }
+
+  .overlay-text {
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  }
+
+  /* Chatbot icon styling */
+.chatbot-icon {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 100;
+}
+
+.chatbot-icon i {
+    cursor: pointer;
+    transition: transform 0.3s;
+    font-size: 30px; /* Increased size for the chat icon */
+    color: white;
+}
+
+.chatbot-icon i:hover {
+    transform: scale(1.2);
+}
+
+
+  /* Button styling */
+  .btn {
+    background-color: #f2e19b;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .btn:hover {
+    background-color: #f6d887;
+  }
+
+  /* Promo Section */
+  .promo-text {
+    text-align: center;
+    padding: 50px;
+  }
+
+  .promo-section {
+    background-color: #fff4ec;
+  }
+
+  .promo-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .card {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .card-image {
+    height: 150px;
+    background-size: cover;
+    border-radius: 10px;
+  }
+
+  .know-more {
+    background-color: #f2e19b;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .know-more:hover {
+    background-color: #f6d887;
+  }
+  body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+}
+
+.promo-section {
+    text-align: center;
+    font-family: "Lexend";
+    color: white;
+    
+}
+.promo-text{
+    background: linear-gradient(to bottom, rgb(94, 18, 78), #a50034);
+    text-align: center;
+
+    color: white;
+    padding: 20px;
+}
+
+.promo-text h1 {
+    margin: 1rem 0rem;
+    
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.promo-text p {
+    margin-bottom:1rem;
+    font-size: 1.2em;
+}
+
+.promo-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap:  nowrap;
+
+}
+
+.card {
+    
+    width: 300px;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-image {
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%);
+    transition: filter 0.3s, transform 0.3s;
+}
+
+.card:hover .card-image {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
+
+.card-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--white);
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.know-more {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    font-size: 1em;
+    color: white;
+    background-color: #a50034;
+    border: none;
+    cursor: pointer;
+    display: none;
+    transition: display 0.3s;
+}
+
+.card:hover .know-more {
+    display: block;
+}
+.slider {
+    position: relative;
+    max-width: 80%; /* 80% width, 10% gap on each side */
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px; /* Optional: rounded corners */
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slide {
+    min-width: 100%; /* Each slide takes full width */
+}
+
+img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* Optional: rounded corners for images */
+}
+
+.navigation {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+.prev, .next {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+.footer {
+  background-color: #faf3e3;
+  padding: 20px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10%;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.list-unstyled {
+  list-style-type: none;
+  padding: 0;
+}
+
+.list-unstyled li {
+  margin-bottom: 5px;
+}
+
+.list-unstyled a {
+  text-decoration: none;
+  color: #f6c5c5;
+}
+
+.list-unstyled a:hover {
+  text-decoration: none;
+}
+
+.social-icons {
+  margin-top: 1rem;
+}
+
+.social-icons a {
+  margin-right: 10px;
+  color: #333;
+}
+
+.download-img {
+  height: 40px;
+  margin: 5px;
+}
+
+.border-grey-dotted {
+  border-color: gray;
+  border-style: initial;
+}
+
+.py-3 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.text-center {
+  text-align: center;
+}

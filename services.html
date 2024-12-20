@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking Services</title>
+    <link rel="stylesheet" href="services.css">
+</head>
+<body style="background-color: #f7f8f8;">
+    <header class="header">
+        <h1>Hotel Booking Services</h1>
+    </header>
+
+    <div class="search-section">
+        <input type="text" placeholder="Search by room type..." id="search-input" onkeyup="filterRooms()">
+        <button id="search-btn" onclick="filterRooms()">Search</button>
+    </div>
+
+    <div class="room-types" id="room-types">
+        
+        <div class="room-card" data-room="Single Room with AC">
+            <h3>Single Room with AC</h3>
+            <p>Comfortable single room with air conditioning.</p>
+            <button onclick="checkAvailability('Single Room with AC', true)">Check Availability</button>
+            <p class="availability-status"></p>
+        </div>
+        <div class="room-card" data-room="Single Room without AC">
+            <h3>Single Room Non AC</h3>
+            <p>Economical single room without air conditioning.</p>
+            <button onclick="checkAvailability('Single Room without AC', false)">Check Availability</button>
+            <p class="availability-status"></p>
+        </div>
+        <div class="room-card" data-room="Two Sharing AC">
+            <h3>Two Sharing AC</h3>
+            <p>Spacious room for two people with air conditioning.</p>
+            <button onclick="checkAvailability('Two Sharing AC', true)">Check Availability</button>
+            <p class="availability-status"></p>
+        </div>
+        <div class="room-card" data-room="Two Sharing Non AC">
+            <h3>Two Sharing Non AC</h3>
+            <p>Affordable room for two people without air conditioning.</p>
+            <button onclick="checkAvailability('Two Sharing Non AC', false)">Check Availability</button>
+            <p class="availability-status"></p>
+        </div>
+        
+        <!-- Additional room types -->
+        <div class="room-card" data-room="Eight Sharing AC">
+            <h3>Eight Sharing AC</h3>
+            <p>Spacious room for eight people with air conditioning.</p>
+            <button onclick="checkAvailability('Eight Sharing AC', true)">Check Availability</button>
+            <p class="availability-status"></p>
+        </div>
+        <div class="room-card" data-room="Eight Sharing Non AC">
+            <h3>Eight Sharing Non AC</h3>
+            <p>Spacious room for eight people without air conditioning.</p>
+            <button onclick="checkAvailability('Eight Sharing Non AC', false)">Check Availability</button>
+            <p class="availability-status"></p>
+        </div>
+        <div class="room-card" data-room="Ten Sharing AC">
+            <h3>Ten Sharing AC</h3>
+            <p>Large room for ten people with air conditioning.</p>
+            <button onclick="checkAvailability('Ten Sharing AC', true)">Check Availability</button>
+            <p class="availability-status"></p>
+        </div>
+        <div class="room-card" data-room="Ten Sharing Non AC">
+            <h3>Ten Sharing Non AC</h3>
+            <p>Large room for ten people without air conditioning.</p>
+            <button onclick="checkAvailability('Ten Sharing Non AC', false)">Check Availability</button>
+            <p class="availability-status"></p>
+        </div>
+        <div class="room-card" data-room="Four in 1 AC">
+            <h3>Four in 1 AC</h3>
+            <p>Room for four people with air conditioning.</p>
+            <button onclick="checkAvailability('Four in 1 AC', true)">Check Availability</button>
+            <p class="availability-status"></p>
+        </div>
+        <div class="room-card" data-room="Four in 1 Non AC">
+            <h3>Four in 1 Non AC</h3>
+            <p>Room for four people without air conditioning.</p>
+            <button onclick="checkAvailability('Four in 1 Non AC', false)">Check Availability</button>
+            <p class="availability-status"></p>
+        </div>
+        <div class="room-card" data-room="Five in 1 AC">
+            <h3>Five in 1 AC</h3>
+            <p>Room for five people with air conditioning.</p>
+            <button onclick="checkAvailability('Five in 1 AC', true)">Check Availability</button>
+            <p class="availability-status"></p>
+        </div>
+        <div class="room-card" data-room="Five in 1 Non AC">
+            <h3>Five in 1 Non AC</h3>
+            <p>Room for five people without air conditioning.</p>
+            <button onclick="checkAvailability('Five in 1 Non AC', false)">Check Availability</button>
+            <p class="availability-status"></p>
+        </div>
+    </div>
+
+    <script>
+        function filterRooms() {
+            const searchInput = document.getElementById("search-input").value.toLowerCase();
+            const roomCards = document.querySelectorAll(".room-card");
+
+            roomCards.forEach((card) => {
+                const roomType = card.getAttribute("data-room").toLowerCase();
+                card.style.display = roomType.includes(searchInput) ? "block" : "none";
+            });
+        }
+
+        function checkAvailability(roomType, isAvailable) {
+            // Ensure we target the room card correctly
+            const roomCards = document.querySelectorAll(".room-card");
+            roomCards.forEach(card => {
+                const cardRoomType = card.getAttribute("data-room");
+                if (cardRoomType === roomType) {
+                    const statusElement = card.querySelector(".availability-status");
+                    const statusMessage = isAvailable ? "Room is available for booking!" : "Sorry, room is not available at the moment.";
+                    statusElement.textContent = statusMessage;
+                    statusElement.style.color = isAvailable ? "green" : "red";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

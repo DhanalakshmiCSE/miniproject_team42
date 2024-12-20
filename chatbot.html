@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot | Becodewala</title>
+    <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+* {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f2e19b;
+    
+    
+  }
+
+  .container {
+    width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: #64646f33 0px 7px 29px 0px;
+    background: url(./images/imgs_1.jpg);
+  }
+
+  .title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color:black;
+  }
+
+  .chat {
+    height: 400px;
+    overflow-y: scroll;
+    margin: 20px 0;
+    padding: 10px;
+    border: 2px solid #545250;
+    border-radius: 5px;
+    background: url(./images/img_5.jpg);
+  }
+
+  .message {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+  }
+
+  .user {
+    justify-content: flex-end;
+  }
+
+  .bot {
+    justify-content: flex-start;
+  }
+
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 10px;
+  }
+
+  .user .avatar {
+    order: 2;
+    background-color: #f2e19b;
+    background-size: cover;
+  }
+
+  .bot .avatar {
+    order: 1;
+    background-color: #f2e19b;
+    background-size: cover;
+  }
+
+  .text {
+    max-width: 70%;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    color: white;
+  }
+
+  .user .text {
+    background: #4a4d52;
+  }
+
+  .bot .text {
+    background: #8c8c8e;
+  }
+
+  .input {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #cbcbce;
+    border-radius: 5px;
+    outline: none;
+    font-size: 20px;
+   
+  }
+
+  .input:focus {
+    border-color: #8296d0;
+    color: #1e1f1f;
+  }
+
+  .button {
+    position: absolute;
+    width: 70px;
+    border: none;
+    padding: 1px;
+    background: white;
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: .01rem;
+    margin-left: -4.1rem;
+    outline: none;
+  
+  }
+    button i{
+    font-size: 3rem;
+    }
+    .button:hover {
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .chat::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .chat::-webkit-scrollbar-thumb {
+        background: #bcbdc0;
+        border-radius: 10px;
+    }
+  
+</style>
+
+  
+</style>
+<body>
+    <div class="container">
+        <div class="title">Let's Chat</div>
+        <div class="chat" id="chat"></div>
+        <input type="text" class="input" id="input" placeholder="Type your message here...." />
+        <button class="button" id="button"><i class="fa-brands fa-telegram"></i></button>
+      </div>
+      
+      <script src="script.js"></script>
+</body>
+<script>
+     // A simple chatbot that responds with some predefined answers
+     function chatbot(input) {
+    let output = "";
+    input = input.toLowerCase();
+    
+    if (input.includes("hello") || input.includes("hi")) {
+        output = "Hello! How can I assist you with your hostel booking today?";
+    } else if (input.includes("how many rooms")) {
+        output = "We currently have more than 300 rooms available.";
+    } else if (input.includes("cost of the room") || input.includes("room price")) {
+        output = "The cost of the room is based on the selection.It will differ for AC and NON AC for more details contact us.";
+    } else if (input.includes("book a room")) {
+        output = "To book a room, please provide your preferred room type and stay duration.";
+    } else if (input.includes("facilities") || input.includes("amenities")) {
+        output = "We offer free Wi-Fi, 24/7 security, laundry services, and a mess facility.";
+    } else if (input.includes("contact")) {
+        output = "You can contact our hostel manager at +91-9876543210.";
+    } else if(input.includes("types of rooms")){
+        output="single room , two in one , four sharing ,eight sharing , 12 sharing , and we have AC and NON AC rooms also"
+    } else if(input.includes("Thankyou")){
+        output="Thank you."
+    }
+    else {
+        output = "I'm sorry, I don't have that information. Please try asking something else related to room availability, booking, or pricing.";
+    }
+    
+    return output;
+}
+
+  // Display the user message on the chat
+  function displayUserMessage(message) {
+    let chat = document.getElementById("chat");
+    let userMessage = document.createElement("div");
+    userMessage.classList.add("message");
+    userMessage.classList.add("user");
+    let userAvatar = document.createElement("div");
+    userAvatar.classList.add("avatar");
+    let userText = document.createElement("div");
+    userText.classList.add("text");
+    userText.innerHTML = message;
+    userMessage.appendChild(userAvatar);
+    userMessage.appendChild(userText);
+    chat.appendChild(userMessage);
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+  // Display the bot message on the chat
+  function displayBotMessage(message) {
+    let chat = document.getElementById("chat");
+    let botMessage = document.createElement("div");
+    botMessage.classList.add("message");
+    botMessage.classList.add("bot");
+    let botAvatar = document.createElement("div");
+    botAvatar.classList.add("avatar");
+    let botText = document.createElement("div");
+    botText.classList.add("text");
+    botText.innerHTML = message;
+    botMessage.appendChild(botAvatar);
+    botMessage.appendChild(botText);
+    chat.appendChild(botMessage);
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+  // Send the user message and get the bot response
+  function sendMessage() {
+    let input = document.getElementById("input").value;
+    if (input) {
+      displayUserMessage(input);
+      let output = chatbot(input);
+      setTimeout(function() {
+        displayBotMessage(output);
+      }, 1000);
+      document.getElementById("input").value = "";
+    }
+  }
+
+  // Add a click event listener to the button
+  document.getElementById("button").addEventListener("click", sendMessage);
+
+  // Add a keypress event listener to the input
+  document.getElementById("input").addEventListener("keypress", function(event) {
+    if (event.keyCode == 13) {
+      sendMessage();
+    }
+  });
+</script>
+</html>
